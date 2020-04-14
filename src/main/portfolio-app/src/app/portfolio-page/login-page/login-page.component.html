@@ -1,0 +1,24 @@
+<h1 class="login-header">Login</h1>
+<hr>
+<div class="login-form-div">
+    <form #loginForm="ngForm" (ngSubmit)="login(loginForm.value)" novalidate class="login-form">
+        <div class="form-field" [ngClass]="{'error': loginForm.controls.userName?.invalid &&
+        (loginForm.controls.userName?.touched || mouseoverLogin)}">
+            <label for="userName">User Name:</label>
+            <em *ngIf="loginForm.controls.userName?.invalid &&
+            (loginForm.controls.userName?.touched || mouseoverLogin)">Required</em>
+            <input class="login-input" (ngModel)="userName" name="userName" id="userName" required type="text" placeholder="UserName"/>
+        </div>
+        <div class="form-field" [ngClass]="{'error': loginForm.controls.password?.invalid &&
+        (loginForm.controls.password?.touched || mouseoverLogin)}">
+            <label for="password">Password:</label>
+            <em *ngIf="loginForm.controls.password?.invalid &&
+            (loginForm.controls.password?.touched || mouseoverLogin)">Required</em>
+            <input class="login-input" (ngModel)="password" name="password" id="password" required type="password" placeholder="Password"/>
+        </div>
+        <span (mouseenter)="mouseoverLogin=true" (mouseleave)="mouseoverLogin=false">
+            <button type="submit" class="login-button" [disabled]="loginForm.invalid">Login</button>
+        </span>
+        <a [routerLink]="['/register']">Register Here!</a>
+    </form>
+</div>

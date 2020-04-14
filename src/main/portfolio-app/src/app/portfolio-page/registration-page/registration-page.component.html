@@ -1,0 +1,25 @@
+<div>
+    <h1 class="register-header">Registration</h1>
+    <hr>
+    <div class="register-form-div">
+        <form class="register-form" [formGroup]="registerForm" (ngSubmit)="register(registerForm.value)" autocomplete="off" novalidate>
+            <div class="form-field">
+                <label for="userName">UserName:</label>
+                <em *ngIf="registerForm.controls.userName?.invalid &&
+                    (registerForm.controls.userName?.touched || mouseoverLogin)">Required</em>
+                <input class="register-input" formControlName="userName" id="userName" type="text" placeholder="UserName"/>
+            </div>
+            <div class="form-field">
+                <label for="password">password:</label>
+                <em *ngIf="registerForm.controls.password?.invalid &&
+                    (registerForm.controls.password?.touched || mouseoverLogin)">Required</em>
+                <input class="register-input" formControlName="password" id="password" type="password" placeholder="password"/>
+            </div>
+
+            <span (mouseenter)="mouseoverLogin=true" (mouseleave)="mouseoverLogin=false">
+                <button class="register-button" type="submit" [disabled]="registerForm.invalid">Register</button>
+            </span>
+            <a [routerLink]="['/login']">Already a user!</a>
+        </form>
+    </div>
+</div>

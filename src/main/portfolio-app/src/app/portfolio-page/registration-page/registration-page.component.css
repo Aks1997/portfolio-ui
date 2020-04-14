@@ -1,0 +1,43 @@
+.register-header{
+    background-color: rgb(240, 237, 231);
+    padding: 24px;
+}
+
+.register-form-div{
+    width: 100%;
+    padding-top: 56px;
+}
+
+.register-form{
+    width: 60%;
+    margin: auto;
+}
+
+.form-field{
+    margin: 24px 0 4px 8px;
+}
+
+.register-input{
+    display: block;
+    width: 50%;
+    padding: 8px 4px;
+    border-radius: 5px;
+}
+
+.register-button{
+    padding: 8px 4px;
+    background-color: blue;
+    color: white;
+    width: 15%;
+    border-radius: 20px;
+    margin: 24px;
+}
+
+.register-button:hover{
+    cursor: pointer;
+}
+
+em{
+    color: #860808;
+    padding-left: 40px;
+}
