@@ -12,6 +12,12 @@ export function RestangularConfigFactory(RestangularProvider, progressbarHandler
         return data;
       });
       
+      RestangularProvider.addFullRequestInterceptor((element, operation, path, url, headers, params)=> {
+        return {
+          headers: Object.assign({}, headers, {'Authorization': 'Basic ' + Utils.getBasicAuth()})
+        }
+      });
+
       RestangularProvider.addErrorInterceptor((response, subject, responseHandler) => {
         //Show error msgs on UI code to be implemented here
         //Navigate to page not found if user is unauthorized for any call

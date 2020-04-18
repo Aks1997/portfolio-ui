@@ -27,4 +27,10 @@ export class Utils {
 	static getEncodedRoot(){
         return location.protocol + "%2F%2F" + location.host;
     }
+
+    static getBasicAuth(){
+        let user= "admin";
+        let password= "System@123";
+        return btoa(user+":"+password);
+    }
 }

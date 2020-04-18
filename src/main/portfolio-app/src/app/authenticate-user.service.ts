@@ -15,7 +15,7 @@ export class AuthenticateUserService {
   }
 
   loginUser(userName: string, pass: string){
-    return this.restangular.one(this.loginUrl).get({},{"Authorization": "Basic "+btoa(userName+":"+pass)});
+    return this.restangular.one(this.loginUrl).get({},{"Auth": "Basic "+btoa(userName+":"+pass)});
   }
 
   registerUser(formFields){
