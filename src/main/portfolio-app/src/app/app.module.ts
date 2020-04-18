@@ -9,6 +9,7 @@ import { RestangularConfigFactory } from './network/RestAngularConfig';
 import { ProgressbarHandlerService } from './portfolio-page/progressbar/progressbar-handler.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SnackbarHandlerService } from './portfolio-page/snackbar/snackbar-handler.service';
+import { UserMaintainanceService } from './portfolio-page/Models/Services/user-maintainance.service';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { SnackbarHandlerService } from './portfolio-page/snackbar/snackbar-handl
     BrowserModule,
     AppRoutingModule,
     PortfolioPageModule,
-    RestangularModule.forRoot([ProgressbarHandlerService, SnackbarHandlerService], RestangularConfigFactory),
+    RestangularModule.forRoot([ProgressbarHandlerService, SnackbarHandlerService, UserMaintainanceService], RestangularConfigFactory),
     BrowserAnimationsModule
   ],
   providers: [],

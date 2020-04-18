@@ -8,11 +8,14 @@ import { PortFolioRoutingModule } from './portfolio-page-routing.module';
 import { RegistrationPageComponent } from './registration-page/registration-page.component';
 import { ProgressbarComponent } from './progressbar/progressbar.component';
 import { SnackbarComponent } from './snackbar/snackbar.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { ToolbarComponent } from './utility-components/toolbar/toolbar.component';
+import { ButtonComponent } from './utility-components/button/button.component';
 
 
 
 @NgModule({
-  declarations: [LoginPageComponent, RegistrationPageComponent, ProgressbarComponent, SnackbarComponent],
+  declarations: [LoginPageComponent, RegistrationPageComponent, ProgressbarComponent, SnackbarComponent, DashboardComponent, ToolbarComponent, ButtonComponent],
   imports: [
     CommonModule,
     PortFolioRoutingModule,

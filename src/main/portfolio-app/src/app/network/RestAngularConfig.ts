@@ -1,20 +1,25 @@
 import { Utils } from './utils';
 import { ProgressbarHandlerService } from '../portfolio-page/progressbar/progressbar-handler.service';
 import { SnackbarHandlerService } from '../portfolio-page/snackbar/snackbar-handler.service';
+import { CommonConstants } from '../common/common-constants';
+import { UserMaintainanceService } from '../portfolio-page/Models/Services/user-maintainance.service';
 
-export function RestangularConfigFactory(RestangularProvider, progressbarHandlerService: ProgressbarHandlerService, snackbarHandlerService: SnackbarHandlerService){
+export function RestangularConfigFactory(RestangularProvider, progressbarHandlerService: ProgressbarHandlerService, snackbarHandlerService: SnackbarHandlerService, userMaintainanceService: UserMaintainanceService){
     RestangularProvider.setBaseUrl(Utils.getDocumentsRoot());
 
     RestangularProvider.addResponseInterceptor((data, operation, what, url, response, deferred)=> {
-        if(response.headers.get('access_token')){
-          localStorage.setItem("access_token",response.headers.get('access_token'));
-        }
         return data;
       });
       
       RestangularProvider.addFullRequestInterceptor((element, operation, path, url, headers, params)=> {
+        let customHeaders= {
+          Authorization: 'Basic ' + Utils.getBasicAuth()
+        }
+        if(localStorage.getItem(CommonConstants.ACCESS_TOKEN)){
+          customHeaders[CommonConstants.ACCESS_TOKEN]=localStorage.getItem(CommonConstants.ACCESS_TOKEN);
+        }
         return {
-          headers: Object.assign({}, headers, {'Authorization': 'Basic ' + Utils.getBasicAuth()})
+          headers: Object.assign({}, headers, customHeaders)
         }
       });
 
@@ -23,6 +28,9 @@ export function RestangularConfigFactory(RestangularProvider, progressbarHandler
         //Navigate to page not found if user is unauthorized for any call
         progressbarHandlerService.hideProgressBar();
         snackbarHandlerService.openSnackBar(response.error.message);
+        if(CommonConstants.INVALID_TOKEN===response.error.message){
+          userMaintainanceService.loggedOutUser();
+        }
         return true;
       });
 }
