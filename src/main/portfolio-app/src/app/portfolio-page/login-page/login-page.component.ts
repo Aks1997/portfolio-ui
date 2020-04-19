@@ -25,7 +25,7 @@ export class LoginPageComponent implements OnInit {
     this.progressbarHandlerService.showProgressBar();
     this.authenticateUserService.loginUser(formValue.userName, formValue.password)
       .subscribe(result=>{
-        this.userMaintainanceService.createUser(result[CommonConstants.ACCESS_TOKEN], result[CommonConstants.USERNAME]);
+        this.userMaintainanceService.createUser(result[CommonConstants.ACCESS_TOKEN], result[CommonConstants.USERID]);
         this.progressbarHandlerService.hideProgressBar();
       });
   }

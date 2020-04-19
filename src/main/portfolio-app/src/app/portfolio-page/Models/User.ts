@@ -1,6 +1,6 @@
 export class User{
 
-    userName: string;
+    userId: string;
     access_token: string;
     isLoggedIn: boolean;
 

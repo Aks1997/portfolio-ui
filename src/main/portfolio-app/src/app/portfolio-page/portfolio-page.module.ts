@@ -9,13 +9,12 @@ import { RegistrationPageComponent } from './registration-page/registration-page
 import { ProgressbarComponent } from './progressbar/progressbar.component';
 import { SnackbarComponent } from './snackbar/snackbar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { ToolbarComponent } from './utility-components/toolbar/toolbar.component';
-import { ButtonComponent } from './utility-components/button/button.component';
+import { ToolbarTemplateComponent } from './utility-components/toolbar-template/toolbar-template.component';
 
 
 
 @NgModule({
-  declarations: [LoginPageComponent, RegistrationPageComponent, ProgressbarComponent, SnackbarComponent, DashboardComponent, ToolbarComponent, ButtonComponent],
+  declarations: [LoginPageComponent, RegistrationPageComponent, ProgressbarComponent, SnackbarComponent, DashboardComponent, ToolbarTemplateComponent],
   imports: [
     CommonModule,
     PortFolioRoutingModule,
