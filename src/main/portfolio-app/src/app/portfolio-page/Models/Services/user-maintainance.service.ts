@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { User } from '../User';
 import { CommonConstants } from '../../../common/common-constants';
 import { Router } from '@angular/router';
-import { ToolbarHandlerService } from '../../utility-components/toolbar-template/toolbar-handler.service';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({

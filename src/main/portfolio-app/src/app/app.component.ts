@@ -1,11 +1,11 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
-import { AnchorModel } from './portfolio-page/utility-components/utility-models/anchor-model';
-import { MenuModel } from './portfolio-page/utility-components/utility-models/menu-model';
 import { UserMaintainanceService } from './portfolio-page/Models/Services/user-maintainance.service';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
-import { MenuItemModel } from './portfolio-page/utility-components/utility-models/menu-item-model';
 import { Router } from '@angular/router';
+import { AnchorModel } from './utilities/utility-models/anchor-model';
+import { MenuModel } from './utilities/utility-models/menu-model';
+import { MenuItemModel } from './utilities/utility-models/menu-item-model';
 
 @Component({
   selector: 'app-root',

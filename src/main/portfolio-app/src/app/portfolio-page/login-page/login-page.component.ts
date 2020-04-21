@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 import { AuthenticateUserService } from '../../authenticate-user.service';
-import { ProgressbarHandlerService } from '../progressbar/progressbar-handler.service';
 import { UserMaintainanceService } from '../Models/Services/user-maintainance.service';
 import { CommonConstants } from 'src/app/common/common-constants';
+import { ProgressbarHandlerService } from 'src/app/utilities/progressbar/progressbar-handler.service';
 
 @Component({
   selector: 'app-login-page',

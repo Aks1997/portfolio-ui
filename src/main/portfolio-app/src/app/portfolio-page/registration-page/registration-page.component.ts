@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { AuthenticateUserService } from '../../authenticate-user.service';
-import { ProgressbarHandlerService } from '../progressbar/progressbar-handler.service';
-import { SnackbarHandlerService } from '../snackbar/snackbar-handler.service';
+import { ProgressbarHandlerService } from 'src/app/utilities/progressbar/progressbar-handler.service';
+import { SnackbarHandlerService } from 'src/app/utilities/snackbar/snackbar-handler.service';
 
 @Component({
   selector: 'app-registration-page',

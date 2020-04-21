@@ -1,8 +1,8 @@
 import { Utils } from './utils';
-import { ProgressbarHandlerService } from '../portfolio-page/progressbar/progressbar-handler.service';
-import { SnackbarHandlerService } from '../portfolio-page/snackbar/snackbar-handler.service';
 import { CommonConstants } from '../common/common-constants';
 import { UserMaintainanceService } from '../portfolio-page/Models/Services/user-maintainance.service';
+import { ProgressbarHandlerService } from '../utilities/progressbar/progressbar-handler.service';
+import { SnackbarHandlerService } from '../utilities/snackbar/snackbar-handler.service';
 
 export function RestangularConfigFactory(RestangularProvider, progressbarHandlerService: ProgressbarHandlerService, snackbarHandlerService: SnackbarHandlerService, userMaintainanceService: UserMaintainanceService){
     RestangularProvider.setBaseUrl(Utils.getDocumentsRoot());
