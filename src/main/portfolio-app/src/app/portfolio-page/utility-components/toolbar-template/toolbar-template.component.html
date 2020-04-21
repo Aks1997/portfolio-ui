@@ -1,1 +1,25 @@
-<p>toolbar-template works!</p>
+<div>
+    <mat-toolbar [class.mat-elevation-z8]="isActive" class="util-toolbar">
+        <span>{{pageHeading}}</span>
+        <mat-icon class="home-icon" (click)="homeIconHandler()" [svgIcon]="homeIcon"></mat-icon>
+        <div *ngFor="let anchor of anchorElements">
+            <a [ngClass]="anchor.cssClass" (click)="anchor.clickHandler()">{{anchor.label}}</a>
+        </div>
+        <div *ngFor="let button of pageButtons">
+            <button (click)="button.btnClickHandler()" [disabled]="button.isDisabled" [ngClass]="button.cssClass">
+                {{button.label}}
+            </button>
+        </div>
+        <div *ngIf="menuButton" class="toolbar-menu" dir="rtl">
+            <mat-menu #appMenu="matMenu">
+                <button *ngFor="let item of menuButton.menuItems" (click)="item.clickHandler()" mat-menu-item>
+                    <mat-icon>{{item.icon}}</mat-icon>
+                    <span>{{item.label}}</span>
+                </button>
+            </mat-menu>
+            <button mat-icon-button [matMenuTriggerFor]="appMenu">
+                <mat-icon class="menu-icon">{{menuButton.menuButtonIcon}}</mat-icon>
+            </button>
+        </div>
+    </mat-toolbar>
+</div>

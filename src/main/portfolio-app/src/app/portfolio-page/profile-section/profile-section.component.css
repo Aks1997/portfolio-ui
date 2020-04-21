@@ -1,0 +1,56 @@
+.profile-section-container{
+    width: 94%;
+    height: 250px;
+    margin: 32px auto;
+    border-radius: 10px;
+    background-color: #f5f5f5;
+    box-shadow: 0 .1rem .2rem rgba(0, 0, 0, 0.2);
+    display: flex;
+    z-index: 2;
+}
+
+/* .profile-section{
+    
+} */
+
+.timeline-span{
+    padding: 6px;
+    background-color: #ff4444;
+    color: #ffffff;
+    position: absolute;
+    top: 30px;
+}
+
+.timeline-span:hover{
+    cursor: pointer;
+    transform: translateX(10px);
+    padding: 8px;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+}
+
+.profile-img-section{
+    width: 30%;
+    position: relative;
+}
+
+.profile-details-section{
+    width: 70%;
+}
+
+#user-img{
+    width: 150px;
+    border-radius: 75px;
+}
+
+.img-div{
+    position: absolute;
+    bottom: -30px;
+    left: 20%;
+}
+
+#edit-btn{
+    position: absolute;
+    bottom: -30px;
+    left: 15%;
+    padding: 4px;
+}

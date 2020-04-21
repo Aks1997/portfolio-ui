@@ -13,7 +13,7 @@
                 <label for="password">password:</label>
                 <em *ngIf="registerForm.controls.password?.invalid &&
                     (registerForm.controls.password?.touched || mouseoverLogin)">Required</em>
-                <input class="register-input" formControlName="password" id="password" type="password" placeholder="password"/>
+                <input class="register-input" formControlName="password" id="password" type="password" appShowHide placeholder="password"/>
             </div>
 
             <span (mouseenter)="mouseoverLogin=true" (mouseleave)="mouseoverLogin=false">

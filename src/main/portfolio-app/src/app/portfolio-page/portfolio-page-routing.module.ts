@@ -6,8 +6,13 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { RegistrationPageComponent } from './registration-page/registration-page.component';
 import { LoginAuthguardService } from '../services/guards/login-authguard.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 const routes: Routes = [
+  {
+    path: '',
+    component: HomePageComponent
+  },
   {
     path: 'login', 
     component: LoginPageComponent,
@@ -19,7 +24,7 @@ const routes: Routes = [
     canActivate: [LoginAuthguardService]
   },
   {
-    path: '',
+    path: ':id',
     component: DashboardComponent
   }
 ];

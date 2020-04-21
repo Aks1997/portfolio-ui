@@ -14,7 +14,7 @@
             <label for="password">Password:</label>
             <em *ngIf="loginForm.controls.password?.invalid &&
             (loginForm.controls.password?.touched || mouseoverLogin)">Required</em>
-            <input class="login-input" (ngModel)="password" name="password" id="password" required type="password" placeholder="Password"/>
+            <input class="login-input" (ngModel)="password" name="password" id="password" required type="password" appShowHide placeholder="Password"/>
         </div>
         <span (mouseenter)="mouseoverLogin=true" (mouseleave)="mouseoverLogin=false">
             <button type="submit" class="login-button" [disabled]="loginForm.invalid">Login</button>

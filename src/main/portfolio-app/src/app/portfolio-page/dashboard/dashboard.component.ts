@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ButtonModel } from '../utility-components/utility-models/button-model';
+import { AnchorModel } from '../utility-components/utility-models/anchor-model';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  
+
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+    
   }
-
 }

@@ -1,0 +1,23 @@
+.home-icon{
+    font-size: 86px;
+    margin-right: 70px;
+    margin-left: 56px;
+    margin-bottom: 40px;
+}
+
+.home-icon:hover{
+    cursor: pointer;
+}
+
+.util-toolbar{
+    background-color: #3f51b5;
+}
+
+.toolbar-menu{
+    position: absolute;
+    right: 76px;
+}
+
+.menu-icon:hover{
+    cursor: pointer;
+}
