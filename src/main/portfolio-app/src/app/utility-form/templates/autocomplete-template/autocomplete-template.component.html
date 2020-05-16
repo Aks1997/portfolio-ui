@@ -1,0 +1,21 @@
+<div *ngIf="editableMode">
+    <mat-form-field [formGroup]="form">
+
+        <input type="text"
+           [placeholder]="field.label"
+           matInput
+           [formControlName]="field.key"
+           [matAutocomplete]="auto">
+
+        <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+              {{option}}
+            </mat-option>
+        </mat-autocomplete>
+
+    </mat-form-field>
+  
+</div>
+  <div *ngIf="!editableMode">
+    <app-label-template [form]="form" [field]="field"></app-label-template>
+  </div>

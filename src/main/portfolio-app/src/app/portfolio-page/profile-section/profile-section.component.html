@@ -2,11 +2,15 @@
     <div class="profile-img-section profile-section">
         <span class="timeline-span">Timeline</span>
         <div class="img-div">
-            <img src="https://www.w3schools.com/howto/img_avatar2.png" id="user-img"/>
-            <button id="edit-btn" class="btn">Edit</button>
+            <img #imagePreview src="https://www.w3schools.com/howto/img_avatar.png" id="user-img"/>
+            <button *ngIf="isLoggedinUserId" (click)="openFileChooser()" id="edit-btn" class="btn">Edit</button>
+            <input #fileChooser (change)="fileSelected($event)" style="display: none;" type="file" accept="image/*">
         </div>
     </div>
-    <div class="profile-section profile-details-section">
-        
+    <div class="profile-section profile-details-section" *ngIf="showForm">
+        <app-dynamic-form [fields]="profileData" [isLoggedinUserId]="isLoggedinUserId" (formData)="getData($event)"></app-dynamic-form>
+    </div>
+    <div class="profile-section profile-details-section bottom-div" *ngIf="!showForm">
+        <div class="lines shine" *ngFor="let x of divNums"></div>
     </div>
 </div>

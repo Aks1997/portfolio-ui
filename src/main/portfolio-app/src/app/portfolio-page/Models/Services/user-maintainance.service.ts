@@ -3,6 +3,7 @@ import { User } from '../User';
 import { CommonConstants } from '../../../common/common-constants';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+import { requestorApi, commonUrls } from 'src/app/network/api-end-points';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,7 @@ export class UserMaintainanceService {
   userStatusChanged= new BehaviorSubject<boolean>(this.user.isLoggedIn);
 
   constructor(private route: Router) { 
+
     if(localStorage.getItem(CommonConstants.ACCESS_TOKEN)!=null){
       this.user.isLoggedIn= true;
       this.user.access_token=localStorage.getItem(CommonConstants.ACCESS_TOKEN);

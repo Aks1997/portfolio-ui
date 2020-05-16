@@ -22,7 +22,7 @@ import { SnackbarHandlerService } from './utilities/snackbar/snackbar-handler.se
     PortfolioPageModule,
     RestangularModule.forRoot([ProgressbarHandlerService, SnackbarHandlerService, UserMaintainanceService], RestangularConfigFactory),
     BrowserAnimationsModule,
-    UtilitiesModule.forRoot()
+    UtilitiesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

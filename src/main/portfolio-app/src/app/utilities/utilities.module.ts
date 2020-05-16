@@ -4,22 +4,24 @@ import { ToolbarTemplateComponent } from './toolbar-template/toolbar-template.co
 import { SnackbarComponent } from './snackbar/snackbar.component';
 import { ProgressbarComponent } from './progressbar/progressbar.component';
 import { ShowHideDirective } from './directives/show-hide.directive';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatSnackBarModule, MatToolbarModule, MatIconModule, MatMenuModule } from '@angular/material';
-
+import { ImageSliderComponent } from './image-slider/image-slider.component';
 
 
 @NgModule({
-  declarations: [ToolbarTemplateComponent, SnackbarComponent, ProgressbarComponent, ShowHideDirective],
+  declarations: [ToolbarTemplateComponent, SnackbarComponent, ProgressbarComponent, ShowHideDirective, ImageSliderComponent],
   imports: [
     CommonModule,
+    FormsModule,
     ReactiveFormsModule,
     MatSnackBarModule,
     MatToolbarModule,
     MatIconModule,
     MatMenuModule
   ],
-  exports: [ToolbarTemplateComponent, SnackbarComponent, ProgressbarComponent, ShowHideDirective]
+  exports: [ToolbarTemplateComponent, SnackbarComponent, ProgressbarComponent, ShowHideDirective,
+    ImageSliderComponent]
 })
 export class UtilitiesModule {
   static forRoot(): ModuleWithProviders {

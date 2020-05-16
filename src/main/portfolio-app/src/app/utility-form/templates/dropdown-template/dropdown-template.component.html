@@ -1,0 +1,15 @@
+<div *ngIf="editableMode">
+    <mat-form-field [formGroup]="form">
+        <mat-label class="label-form" [attr.for]="field.key">{{field.label}} </mat-label>
+  
+        <mat-select [formControlName]="field.key" [id]="field.key">
+            <mat-option *ngFor="let option of field.options" [value]="option.value">
+                {{option.value}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+  
+</div>
+  <div *ngIf="!editableMode">
+    <app-label-template [form]="form" [field]="field"></app-label-template>
+  </div>

@@ -1,0 +1,53 @@
+.project-outer{
+    margin-top: 150px;
+}
+
+#header{
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.project-inner{
+    display: flex;
+    width: 100%;
+}
+
+.project-content{
+    width: 50%;
+    position: relative;
+    margin-left: 24px;
+}
+
+#title{
+    font-weight: 600;
+}
+
+#add-btn{
+    display: block;
+    margin: 8px auto;
+    padding: 4px;
+}
+
+.project-content .form-class-outer .form-class-inner{
+    width: 100%;
+}
+
+.project-content .form-class-outer .form-class-inner .form-elements-row .form-elements-column{
+    padding: 5px;
+}
+
+.project-content .text-area-class{
+    width: 150%;
+}
+
+.action-btn{
+    padding: 6px;
+    width: 130px;
+    margin-left: 48px;
+}
+
+#delete-img-tip{
+    text-align: center;
+    transform: translateY(30px);
+}
+

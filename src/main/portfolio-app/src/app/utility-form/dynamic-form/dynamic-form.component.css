@@ -1,0 +1,28 @@
+.action-btn{
+    color: rgb(102, 102, 211);
+    text-decoration: underline;
+}
+
+.action-btn:hover{
+    cursor: pointer;
+}
+
+.form-class-inner{
+    position: absolute;
+    bottom: 24px;
+}
+
+.form-elements-row{
+    display: flex;
+    height: 100%;
+    flex-wrap: wrap;
+}
+
+.form-elements-column{
+    width: 50%;
+}
+
+#update-btn{
+    padding: 4px;
+    margin-left: 32px;
+}

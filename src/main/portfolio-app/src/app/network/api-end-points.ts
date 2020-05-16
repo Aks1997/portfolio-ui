@@ -13,5 +13,13 @@ export const requestorApi = new RestURLEndPoint('');
 
 export const commonUrls = {
     loginUrl: '/authenticate/login',
-    registerUrl: '/authenticate/register'
+    registerUrl: '/authenticate/register',
+    profileDetailsUrl: '/user/profileDetails',
+    uploadUserImageUrl: '/user/upload/image',
+    updateUserDetailsUrl: '/user/update/details',
+    projectDetailsUrl: '/project',
+    uploadProjectImagesUrl: '/project/upload/images',
+    uploadProjectDetailsUrl: '/project/upload/details',
+    deleteProjectsUrl: '/project/delete',
+    deleteProjectImagesUrl: '/project/deleteImages'
 };

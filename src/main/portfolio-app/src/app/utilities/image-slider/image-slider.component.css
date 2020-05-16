@@ -1,0 +1,10 @@
+.img-slider{
+    height: 250px;
+    width: 400px;
+    margin: 48px;
+}
+
+.img-slider:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+}

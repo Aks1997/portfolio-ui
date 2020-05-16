@@ -1,0 +1,16 @@
+<div class="form-class-outer">
+    <form class="form-class-inner" [formGroup]="form" (ngSubmit)="submitForm()">
+        <div class="form-elements-row">
+            <div *ngFor="let field of fields" class="form-elements-column">
+                <app-form-element [editableMode]="editableMode" [form]="form" [field]="field"></app-form-element>
+            </div>
+        </div>
+        <div *ngIf="isLoggedinUserId">
+            <span *ngIf="!editableMode" class="action-btn" (click)="changeEditableMode(true)">Edit</span>
+            <div *ngIf="editableMode">
+                <span (click)="changeEditableMode(false)" class="action-btn">Cancel</span>
+                <button class="btn" id="update-btn" type="submit">Update</button>
+            </div>
+        </div>
+    </form>
+</div>

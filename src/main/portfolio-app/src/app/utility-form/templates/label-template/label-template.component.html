@@ -1,0 +1,7 @@
+<div [formGroup]="form">
+    <label class="label-form" [attr.for]="field.key">{{field.label}}: </label>
+    <label class="value-form">
+      <a *ngIf="field.isLink" [href]="field.value" target="_blank">{{field.value}}</a>
+      <span *ngIf="!field.isLink">{{field.value}}</span>
+    </label>
+  </div>

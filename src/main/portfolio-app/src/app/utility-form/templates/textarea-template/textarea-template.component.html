@@ -1,0 +1,12 @@
+<div *ngIf="editableMode">
+    <mat-form-field class="text-area-class" [formGroup]="form">
+        <mat-label class="label-form" [attr.for]="field.key">{{field.label}} </mat-label>
+  
+        <textarea matInput [formControlName]="field.key"
+                [id]="field.key" [type]="text" [readonly]="field.viewMode"></textarea>
+    
+    </mat-form-field>
+</div>
+  <div *ngIf="!editableMode">
+    <app-label-template [form]="form" [field]="field"></app-label-template>
+  </div>

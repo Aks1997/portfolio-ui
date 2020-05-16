@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import {MatSnackBarModule, MatToolbarModule, MatIconModule, MatMenuModule} from '@angular/material'
 
 import { LoginPageComponent } from './login-page/login-page.component';
 import { PortFolioRoutingModule } from './portfolio-page-routing.module';
@@ -9,19 +8,20 @@ import { RegistrationPageComponent } from './registration-page/registration-page
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { ProfileSectionComponent } from './profile-section/profile-section.component';
+import { UtilitiesModule } from '../utilities/utilities.module';
+import { UtilityFormModule } from '../utility-form/utility-form.module';
+import { ProjectSectionComponent } from './project-section/project-section.component';
 
 
 @NgModule({
-  declarations: [LoginPageComponent, RegistrationPageComponent, DashboardComponent, HomePageComponent, ProfileSectionComponent],
+  declarations: [LoginPageComponent, RegistrationPageComponent, DashboardComponent, HomePageComponent, ProfileSectionComponent, ProjectSectionComponent],
   imports: [
     CommonModule,
     PortFolioRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    MatSnackBarModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatMenuModule
+    UtilitiesModule,
+    UtilityFormModule
   ],
   exports: []
 })

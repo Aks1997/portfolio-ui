@@ -1,0 +1,14 @@
+<div [ngSwitch]="field.type">
+    <div *ngSwitchCase="'util-textfield'">
+        <app-textfield-template [editableMode]="editableMode" [form]="form" [field]="field"></app-textfield-template>
+    </div>
+    <div *ngSwitchCase="'util-dropdown'">
+        <app-dropdown-template [editableMode]="editableMode" [form]="form" [field]="field"></app-dropdown-template>
+    </div>
+    <div *ngSwitchCase="'util-textarea'">
+        <app-textarea-template [editableMode]="editableMode" [form]="form" [field]="field"></app-textarea-template>
+    </div>
+    <div *ngSwitchCase="'util-autocomplete'">
+        <app-autocomplete-template [editableMode]="editableMode" [form]="form" [field]="field"></app-autocomplete-template>
+    </div>
+</div>
