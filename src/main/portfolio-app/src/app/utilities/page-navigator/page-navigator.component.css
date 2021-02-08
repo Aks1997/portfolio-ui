@@ -1,0 +1,30 @@
+.index-link{
+    color: rgb(24, 24, 114);
+    text-decoration: underline;
+    margin: 8px;
+}
+
+.index-link:hover{
+    cursor: pointer;
+}
+
+.navigator-tab{
+    float: right;
+    margin-right: 100px;
+}
+
+.nav{
+    color: #ffffff;
+    background-color: #4b5480;
+    font-size: 1rem;
+    width: 100px;
+    padding: 4px;
+}
+
+.nav:hover{
+    cursor: pointer;
+}
+
+.selected{
+    color: rgb(206, 211, 200);
+}

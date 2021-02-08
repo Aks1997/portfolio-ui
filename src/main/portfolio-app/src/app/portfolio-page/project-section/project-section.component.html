@@ -1,19 +1,10 @@
 <div *ngIf="showProjects" class="project-outer">
     <h2 id="header">My Recent Work</h2>
-    <div class="project-inner">
-        <div class="project-images">
-            <p *ngIf="showImageDeleteTip" id="delete-img-tip">Click Over Image To Delete</p>
-            <app-image-slider (imageClickedEvent)="imageClicked($event)" (mouseHoverEvent)="mouseHoverEvent($event)" [images]="projects[selectedProjectIndex].images"></app-image-slider>
-        </div>
-        <div class="project-content">
-            <app-dynamic-form [fields]="projects[selectedProjectIndex].projectAttributes" 
-                [isLoggedinUserId]="isLoggedinUserId" (formData)="getData($event)"></app-dynamic-form>
-        </div>
-    </div>
-    <div *ngIf="isLoggedinUserId">
-        <button (click)="deleteProject()" class="del-action-btn action-btn">Delete Project</button>
-        <button (click)="triggerFileSelector()" class="btn action-btn">Upload Images</button>
-    </div>
-    <input #fileChooser (change)="fileSelected($event)" style="display: none;" type="file" multiple="multiple" accept="image/*">
+    <app-project-template [ngClass]="animateProject?'project-temp':''" (deleteProjectEvent)="deleteProject($event)" [isLoggedinUserId]="isLoggedinUserId"
+        [index]="currentIndex" (updateProjectEvent)="updateProjectListener($event)" [project]="projects[currentIndex]">
+    </app-project-template>
+    <p *ngIf="projectsTotalCount>0" id="count"><span style="font-weight: 500;">Total Projects:</span>  {{projectsTotalCount}}</p>
+    <app-page-navigator *ngIf="projectsTotalCount>1" [pagesCount]="projectsTotalCount" [currentPage]="currentIndex"
+        (pageIndexEmitter)="pageChangedListener($event)"></app-page-navigator>
 </div>
 <button (click)="addProjectDummy()" *ngIf="isLoggedinUserId" id="add-btn" class="btn">Add Project</button>

@@ -1,0 +1,5 @@
+<div class="navigator-tab">
+    <span (click)="prevClicked()" class="nav">Prev</span>
+    <span (click)="linkClicked(i)" *ngFor="let page of pages; let i=index" [ngClass]="currentPage==i?'selected':''" class="index-link">{{page+1}}</span>
+    <span (click)="nextClicked()" class="nav">Next</span>
+</div>

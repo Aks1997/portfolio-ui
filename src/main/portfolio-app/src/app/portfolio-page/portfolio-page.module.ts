@@ -11,10 +11,13 @@ import { ProfileSectionComponent } from './profile-section/profile-section.compo
 import { UtilitiesModule } from '../utilities/utilities.module';
 import { UtilityFormModule } from '../utility-form/utility-form.module';
 import { ProjectSectionComponent } from './project-section/project-section.component';
+import { ProjectTemplateComponent } from './project-section/project-template/project-template.component';
+import { SkillSectionComponent } from './skill-section/skill-section.component';
+import { ContactsSectionComponent } from './contacts-section/contacts-section.component';
 
 
 @NgModule({
-  declarations: [LoginPageComponent, RegistrationPageComponent, DashboardComponent, HomePageComponent, ProfileSectionComponent, ProjectSectionComponent],
+  declarations: [LoginPageComponent, RegistrationPageComponent, DashboardComponent, HomePageComponent, ProfileSectionComponent, ProjectSectionComponent, ProjectTemplateComponent, SkillSectionComponent, ContactsSectionComponent],
   imports: [
     CommonModule,
     PortFolioRoutingModule,

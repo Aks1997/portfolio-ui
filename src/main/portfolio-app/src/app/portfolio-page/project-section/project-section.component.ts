@@ -16,30 +16,33 @@ import { SnackbarHandlerService } from 'src/app/utilities/snackbar/snackbar-hand
 })
 export class ProjectSectionComponent implements OnInit {
 
-  images: Array<string>;
-
-  @ViewChild("fileChooser", {static: false}) fileChooser: ElementRef;
   @Input() isLoggedinUserId: boolean;
   showProjects: boolean=false;
   projects: Project[]=[];
-  selectedProjectIndex: number;
-  showImageDeleteTip: boolean=false;
+  projectsTotalCount: number=0;
+  downIcon:string;
+  upIcon:string;
+  currentIndex: number=0;
+  dummyCounts:number=0;
+  animateProject: boolean=true;
 
   constructor(private route: ActivatedRoute, private restCallService: RestCallService,
     private formControlService: FormControlService, private snackbarHandlerService: SnackbarHandlerService) {
-    
+    this.downIcon="assets/down.png";
+    this.upIcon="assets/up.png";
   }
 
   ngOnInit() {
     this.route.params.subscribe(param=>{
-      this.restCallService.getProjectsByUserId(param.id)
+      this.restCallService.getProjectsByUserId(param.id, 0, 5)
         .subscribe(res=>{
-          res.forEach(element=>{
+          let pr= res.projects;
+          pr.forEach(element=>{
             this.createProjectObject(element);
           })
-          if(res.length>0){
+          if(pr.length>0){
             this.showProjects=true;
-            this.selectedProjectIndex=0;
+            this.projectsTotalCount= res.count;
           }
         },err=>{
           console.log(err)
@@ -67,24 +70,27 @@ export class ProjectSectionComponent implements OnInit {
   addProjectDummy(){
     let projectAttrs=[];
     projectAttrs.push(new TextFieldModel({key: "Title", label: "Title", value: "",
-      required: true, viewMode: false, type: "util-textfield"}));
+      required: false, viewMode: false, type: "util-textfield"}));
     projectAttrs.push(new TextFieldModel({key: "Link", label: "Link", value: "",
       required: false, viewMode: false, type: "util-textfield", isLink: true}));
     projectAttrs.push(new TextAreaModel({key: "Description", label: "Description", value: "",
-      required: true, viewMode: false, type: "util-textarea"}));
+      required: false, viewMode: false, type: "util-textarea"}));
     let images:[]=[];
-    this.projects.push(new Project(images, projectAttrs));
+    let newProject= new Project(images, projectAttrs);
+    this.projects.splice(0, 0 , newProject);
     this.showProjects=true;
-    this.selectedProjectIndex= this.projects.length-1;
+    this.projectsTotalCount++;
+    this.currentIndex= 0;
+    this.dummyCounts++;
   }
 
-  deleteProject(){
-    if(this.projects[this.selectedProjectIndex].id){
-      this.restCallService.deleteProject(this.route.snapshot.params.id, this.projects[this.selectedProjectIndex].id)
+  deleteProject(index){
+    if(this.projects[index].id){
+      this.restCallService.deleteProject(this.route.snapshot.params.id, this.projects[index].id)
       .subscribe(res=>{
         if(res.results){
           this.snackbarHandlerService.openSnackBar("Project successfully deleted");
-          this.spliceProject();
+          this.spliceProject(index);
         }else{
           this.snackbarHandlerService.openSnackBar("Error occurred while deleting");
         }
@@ -92,49 +98,17 @@ export class ProjectSectionComponent implements OnInit {
         this.snackbarHandlerService.openSnackBar("Error occurred while deleting");
       });
     }else{
-      this.spliceProject();
+      this.spliceProject(index);
+      this.dummyCounts--;
     }
   }
 
-  spliceProject(){
-    this.projects.splice(this.selectedProjectIndex);
-    if(this.selectedProjectIndex>0){
-      this.selectedProjectIndex--;
-    }else if(this.projects.length>0){
-      this.selectedProjectIndex=0;
-    }else{
+  spliceProject(index){
+    this.projects.splice(index,1);
+    if(this.projects.length<=0){
       this.showProjects=false;
     }
-  }
-
-  getData(data){
-    this.restCallService.uploadProjectDetails(this.route.snapshot.params.id, data.value,
-      this.projects[this.selectedProjectIndex].id)
-      .subscribe(res=>{
-        this.updateProject(this.selectedProjectIndex, res);
-      },err=>{
-        console.log(err);
-      })
-  }
-
-  triggerFileSelector(){
-    this.fileChooser.nativeElement.click();
-  }
-
-  fileSelected(data){
-    let files= data.target.files;
-    let formData= new FormData();
-    for(let i=0;i<files.length;i++){
-        formData.append("images", files[i]);
-    }
-
-    this.restCallService.uploadProjectImages(this.route.snapshot.params.id, 
-      formData, this.projects[this.selectedProjectIndex].id)
-      .subscribe(res=>{
-        this.updateProject(this.selectedProjectIndex, res);
-      },err=>{
-        console.log(err);
-      })
+    this.projectsTotalCount--;
   }
 
   updateProject(index, data){
@@ -155,27 +129,43 @@ export class ProjectSectionComponent implements OnInit {
     }
   }
 
-  mouseHoverEvent(event){
-    if(event>=0){
-      this.showImageDeleteTip= true;
-    }else{
-      this.showImageDeleteTip=false;
+  updateProjectListener(data){
+    if(this.projects[data.index].id==null){
+      this.dummyCounts--;
     }
+    this.updateProject(data.index, data.value);
   }
 
-  imageClicked(event){
-    if(this.projects[this.selectedProjectIndex].images.length>event && 
-      this.projects[this.selectedProjectIndex].images[event]["imagePath"] &&
-      this.projects[this.selectedProjectIndex].id){
-        this.restCallService.deleteProjectImages(this.route.snapshot.params.id, 
-          this.projects[this.selectedProjectIndex].id, 
-          this.projects[this.selectedProjectIndex].images[event])
-          .subscribe(res=>{
-            console.log(res);
-          },err=>{
-            console.log(err)
-          });
+  pageChangedListener(index){
+    if(this.projectsTotalCount>index){
+      if(this.projects.length-1<index){
+        let chunk=5;
+        if(index>=this.projects.length-this.dummyCounts+chunk){
+          chunk= index+1-this.projects.length+this.dummyCounts;
+        }
+        this.restCallService.getProjectsByUserId(this.route.snapshot.params.id, this.projects.length-this.dummyCounts,
+                chunk)
+                .subscribe(res=>{
+                  let pr= res.projects;
+                  pr.forEach(element=>{
+                    this.createProjectObject(element);
+                    this.currentIndex=index;
+                    this.animateProject=true;
+                    setTimeout(()=>{
+                      this.animateProject=false;
+                    },1000);
+                  })
+                },err=>{
+        
+                })
+      }else{
+        this.currentIndex=index;
+        this.animateProject=true;
+        setTimeout(()=>{
+          this.animateProject=false;
+        },1000);
       }
-  }  
+    }
+  }
 }
 

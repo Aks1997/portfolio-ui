@@ -21,5 +21,6 @@ export const commonUrls = {
     uploadProjectImagesUrl: '/project/upload/images',
     uploadProjectDetailsUrl: '/project/upload/details',
     deleteProjectsUrl: '/project/delete',
-    deleteProjectImagesUrl: '/project/deleteImages'
+    deleteProjectImagesUrl: '/project/deleteImages',
+    skillSuggestionUrl: '/skill/suggestions'
 };

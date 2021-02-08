@@ -39,8 +39,8 @@ export class RestCallService {
     return this.restangular.all(this.updateUserDetailsUrl+"/"+userId).customPUT(details);
   }
 
-  getProjectsByUserId(userId){
-    return this.restangular.one(this.projectDetailsUrl+"/"+userId).get();
+  getProjectsByUserId(userId, skip, limit){
+    return this.restangular.one(this.projectDetailsUrl+"/"+userId).get({skip: skip, limit: limit});
   }
 
   uploadProjectImages(userId, files, projectId?){
